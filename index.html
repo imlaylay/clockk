@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="clock.js" defer></script>
+    <title>Bomb Clock</title>
+    <style>
+        * { box-sizing: border-box; }
+
+        body {
+            min-height: 100vh;
+            margin: 0;
+            display: grid;
+            place-items: center;
+            overflow: hidden;
+            background: radial-gradient(circle at center, #343434 0%, #111 65%, #050505 100%);
+            font-family: "Courier New", monospace;
+        }
+
+        /* Bomb casing */
+        #clock {
+            position: relative;
+            min-width: min(78vw, 420px);
+            padding: 42px 34px;
+            border: 8px solid #777;
+            border-radius: 28px;
+            background: linear-gradient(145deg, #343434, #171717 55%, #292929);
+            box-shadow: 0 18px 35px #000b, inset 0 3px 8px #ffffff22,
+                        inset 0 -8px 15px #000;
+            color: #ff2b2b;
+            text-align: center;
+            font-size: clamp(2.6rem, 9vw, 5rem);
+            font-weight: 900;
+            letter-spacing: 0.08em;
+            text-shadow: 0 0 7px #ff1717, 0 0 18px #f00, 0 0 32px #a00;
+        }
+
+        /* Small metal bolts */
+        #clock::before,
+        #clock::after {
+            content: "";
+            position: absolute;
+            top: 12px;
+            width: 13px;
+            height: 13px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 35% 30%, #eee, #777 45%, #222 75%);
+            box-shadow: 0 0 0 2px #111;
+        }
+        #clock::before { left: 14px; }
+        #clock::after { right: 14px; }
+
+        /* Wires coming out of the top */
+        body::before,
+        body::after {
+            content: "";
+            position: fixed;
+            top: calc(50% - 155px);
+            width: 12px;
+            height: 75px;
+            border-radius: 8px 8px 0 0;
+            z-index: -1;
+        }
+        body::before {
+            left: calc(50% - 115px);
+            background: #c62828;
+            transform: rotate(-28deg);
+        }
+        body::after {
+            right: calc(50% - 115px);
+            background: #e0b52e;
+            transform: rotate(28deg);
+        }
+
+        @media (max-width: 480px) {
+            #clock { min-width: 82vw; padding: 34px 18px; border-width: 6px; }
+        }
+    </style>
+</head>
+<body >
+    <!--hold data from javascript-->
+    <div id ="clock"></div>
+</body>
+</html>
